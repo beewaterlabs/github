@@ -84,6 +84,9 @@ def main():
     
     # Show current status
     print("\n📊 Current repository status:")
+    status_result = run_command("git status")
+    print(status_result)  # This line prints the actual status output
+
     run_command("git status")
 
 if __name__ == "__main__":
