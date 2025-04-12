@@ -2,7 +2,6 @@
 """
 GitHub Auto Push Script - Detects changed files and pushes to remote repository
 """
-
 import subprocess
 import os
 
@@ -27,7 +26,7 @@ def get_changed_files():
         if line.strip():
             # Extract filename (status is in the first 2 characters)
             file_status = line[:2].strip()
-            file_name = line[3:].strip()
+            file_name = line[2:].strip()  # Changed from 3 to 2 to capture the full filename
             
             # Skip deleted files as we can't add them
             if file_status != 'D ' and file_status != 'DD':
@@ -85,9 +84,7 @@ def main():
     # Show current status
     print("\n📊 Current repository status:")
     status_result = run_command("git status")
-    print(status_result)  # This line prints the actual status output
-
-    run_command("git status")
+    print(status_result)
 
 if __name__ == "__main__":
     main()
